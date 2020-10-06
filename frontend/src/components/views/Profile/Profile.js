@@ -6,14 +6,16 @@ import clsx from 'clsx';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './PostAdd.module.scss';
+import styles from './Profile.module.scss';
 
-const Component = ({className, children}) => (
+const Component = ({className, children}) => {
+  return(
   <div className={clsx(className, styles.root)}>
-    <h2>PostAdd</h2>
+    <h2>Profile</h2>
     {children}
   </div>
-);
+  )
+};
 
 Component.propTypes = {
   children: PropTypes.node,
@@ -31,7 +33,7 @@ Component.propTypes = {
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as PostAdd,
-  // Container as PostAdd,
-  Component as PostAddComponent,
+  Component as Profile,
+  // Container as Profile,
+  Component as ProfileComponent,
 };

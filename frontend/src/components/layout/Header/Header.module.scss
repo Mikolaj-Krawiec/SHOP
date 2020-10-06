@@ -1,4 +1,15 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.menuButton{
+    margin-right: 2rem;
+}
+
+.title{
+    flex-grow: 1;
+}
