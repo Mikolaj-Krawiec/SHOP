@@ -1,50 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { useLocation } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { fetchItems } from '../../../redux/itemsRedux';
 
 import styles from './MainLayout.module.scss';
 
 import { AppBar, Container, Toolbar } from '@material-ui/core';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import { Header } from '../Header/Header'
+import { Header } from '../Header/Header';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <AppBar>
+const Component = ({ className, children, fetchItems }) => {
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
+  const location = useLocation().pathname;
+
+  return (
+    <div className={clsx(className, styles.root)}>
+      <AppBar className={clsx(trigger ? styles.toolbarSolid : styles.toolbar)}>
+        <Container maxWidth="lg">
+          <Toolbar disableGutters variant="dense">
+            <Header />
+          </Toolbar>
+        </Container>
+      </AppBar>
       <Container maxWidth="lg">
-        <Toolbar disableGutters>
-          <Header />
-        </Toolbar>
+        {location !== '/' && <Toolbar variant="dense"></Toolbar>}
+        {children}
       </Container>
-    </AppBar>
-    <Container maxWidth="lg">
-      <Toolbar />
-      {children}
-    </Container>
-  </div>
-);
+    </div>
+  );
+};
 
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  fetchItems: PropTypes.func,
 };
 
 // const mapStateToProps = state => ({
 //   someProp: reduxSelector(state),
 // });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchItems: () => dispatch(fetchItems()),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ContainerRedux = connect(null, mapDispatchToProps)(Component);
 
 export {
-  Component as MainLayout,
-  // Container as MainLayout,
+  // Component as MainLayout,
+  ContainerRedux as MainLayout,
   Component as MainLayoutComponent,
 };

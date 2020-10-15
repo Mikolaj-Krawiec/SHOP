@@ -1,6 +1,15 @@
 export const initialState = {
-  posts: {
-    data: {},
+  items: {
+    data: [],
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
+  user: {
+    wishList: [],
+    shoppingCart: {},
+    orders: [],
     loading: {
       active: false,
       error: false,

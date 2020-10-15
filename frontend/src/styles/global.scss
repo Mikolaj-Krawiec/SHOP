@@ -1,1 +1,6 @@
 @import "settings.scss";
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}

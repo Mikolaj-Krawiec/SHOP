@@ -1,4 +1,14 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.toolbar{
+
+  background-color: transparent;
+  transition: all 0.4s ease;
+  box-shadow: none,
+}
+
+.toolbarSolid{
+  background-color: #eee;
+  transition: all 1s ease;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}

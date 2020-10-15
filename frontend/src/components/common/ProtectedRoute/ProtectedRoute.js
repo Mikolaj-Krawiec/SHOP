@@ -1,25 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
+import { Route } from 'react-router-dom';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+import Loading from '../Loading/Loading';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './Profile.module.scss';
-
-const Component = ({ className, children }) => {
-  return (
-    <div className={clsx(className, styles.root)}>
-      <h2>Profile</h2>
-      {children}
-    </div>
-  );
-};
+const Component = ({ component, ...args }) => (
+  <Route
+    component={withAuthenticationRequired(component, {
+      onRedirecting: () => <Loading />,
+    })}
+    {...args}
+  />
+);
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  component: PropTypes.element,
 };
 
 // const mapStateToProps = state => ({
@@ -33,7 +32,7 @@ Component.propTypes = {
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as Profile,
-  // Container as Profile,
-  Component as ProfileComponent,
+  Component as ProtectedRoute,
+  // Container as ProtectedRoute,
+  Component as ProtectedRouteComponent,
 };

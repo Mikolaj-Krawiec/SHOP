@@ -4,7 +4,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 
-const postsRoutes = require('./routes/posts.routes');
+const itemsRoutes = require('./routes/items.routes');
+const usersRoutes = require('./routes/users.routes');
+const auth = require('./middleware/auth')
 
 const app = express();
 
@@ -15,11 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
-app.use('/api', postsRoutes);
+app.use('/api', itemsRoutes);
+app.use('/api', auth.jwtCheck, usersRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
-  res.status(404).send({ post: 'Not found...' });
+  res.status(404).send({ message: 'Not found...' });
 });
 
 /* REACT WEBSITE */

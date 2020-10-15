@@ -6,14 +6,15 @@ import clsx from 'clsx';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './Post.module.scss';
+import styles from './Splash.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Post</h2>
-    {children}
-  </div>
-);
+const Component = ({ className, children }) => {
+  return (
+    <div className={clsx(styles.splashImage)}>
+      <img alt={''} src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1961&q=80" />
+    </div>
+  );
+};
 
 Component.propTypes = {
   children: PropTypes.node,
@@ -31,7 +32,7 @@ Component.propTypes = {
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as Post,
-  // Container as Post,
-  Component as PostComponent,
+  Component as Splash,
+  // Container as Splash,
+  Component as SplashComponent,
 };

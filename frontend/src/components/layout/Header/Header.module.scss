@@ -1,15 +1,22 @@
 @import '../../../styles/settings.scss';
 
-.root{
+.root {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
     display: flex;
     align-items: center;
-    flex-grow: 1;
+  }
 }
 
-.menuButton{
-    margin-right: 2rem;
+.menuButton {
+  margin-right: 2rem;
 }
 
-.title{
-    flex-grow: 1;
+.title {
+  text-decoration: none;
+  color: inherit;
 }

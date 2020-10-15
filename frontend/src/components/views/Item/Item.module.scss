@@ -1,0 +1,59 @@
+@import '../../../styles/settings.scss';
+
+// .root {
+// }
+
+.card {
+  height: 700px;
+  display: flex;
+  background-color: $background-color;
+
+  .text {
+    text-align: center;
+    padding: 40px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    color: $primary;
+
+    .selectQuantity {
+      background-color: $secondary;
+
+      * {
+        color: $primary;
+      }
+
+      div {
+        padding: 10px;
+      }
+    }
+
+    .addToCartBtn {
+      border: 1px solid gold;
+      color: gold;
+      background-color: $secondary;
+    }
+  }
+
+  .images {
+    width: 60%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .inFocus {
+      height: 80%;
+    }
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../../styles/settings.scss';
+.root{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  color: white;
+  background-color: $background-color;
+  display: flex;
+  height: 30rem;
+
+  .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 40%;
+
+    &>*{
+      margin: 10px 0;
+    }
+
+    .btn{
+      margin: 5px;
+    }
+  }
+
+  img{
+    object-fit: cover;
+    width: 60%;
+    height: 100%;
+  }
+}

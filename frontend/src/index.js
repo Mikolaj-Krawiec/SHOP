@@ -1,19 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { App } from "./App";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from './App';
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
 
-import { Auth0Provider } from "@auth0/auth0-react";
+import './styles/global.scss';
+
+import { Auth0Provider } from '@auth0/auth0-react';
+import { store } from './redux/store';
 
 ReactDOM.render(
-  <Auth0Provider
-    domain="dev-lynix.eu.auth0.com"
-    clientId="VG3xgSKYhhHPx7STv4OwAd6bF6KJNQwh"
-    redirectUri={window.location.origin}
-  >
-    <App />
-  </Auth0Provider>,
-  document.getElementById("root")
+  <Provider store={store}>
+    <Auth0Provider
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      redirectUri={window.location.origin}
+      audience={process.env.REACT_APP_AUTH0_AUDIENCE}
+    >
+      <App />
+    </Auth0Provider>{' '}
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
